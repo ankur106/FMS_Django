@@ -1,0 +1,32 @@
+{%  extends 'app/root.html'  %}
+
+
+
+{%  block title    %}
+loginAdmin
+{%  endblock    %}
+
+
+
+{%  block content    %}
+
+<div>
+	<h2>{{ err }} </h2>
+	<form method="POST">
+		 {%	csrf_token	%}
+		 {{ form.as_p }}
+		 <button type="submit" class="btn btn-secondary">login</button>
+		 
+<a href="{% url 'home' %}" class="btn btn-secondary" role="button">Home</a>
+	</form>
+
+</div>
+<hr>
+<span>
+
+<a href="{%	url 'createAdmin'	 %}" >registerAdmin</a>
+
+</span>
+
+
+{%  endblock    %}

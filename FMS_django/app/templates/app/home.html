@@ -1,0 +1,28 @@
+{% extends 'app/root.html'	%}
+
+
+
+{%  block title    %}
+Home
+{%  endblock    %}
+
+
+
+{%  block content    %}
+<big class="avi">Home</big>
+<a href="{% url 'sendEmail' %}" class="btn btn-secondary" role="button">SendMail</a>
+<a href="{% url 'dashboard' %}" class="btn btn-secondary" role="button">Dashboard</a>
+
+<div style="float: right;">
+	
+{%	if user.is_authenticated %}
+    
+	<h3 class="avi">User:-{{ user.username }}</h3>
+		<form action="{% url 'logoutAdmin' %}" method="post">
+               {% csrf_token  %}
+               <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    
+{% endif %}
+</div>
+{%  endblock    %}

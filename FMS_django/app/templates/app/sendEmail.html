@@ -1,0 +1,36 @@
+{% extends 'app/root.html'	%}
+
+{%  block title    %}
+sendEmail
+{%  endblock    %}
+
+
+
+
+
+{%  block content    %}
+
+<div>
+   <h2>Send msg to Users</h2>
+   <h4>{{ err }}</h4>
+	<form method="post">
+		  {% csrf_token	 %}
+		  
+		  <div class="form-group">
+		  	<big>Message</big>
+		  	<!-- <input type="email" name="email" > -->
+		  	<textarea  name="msg" rows="3" class="form-control"></textarea>
+		  	<br>
+		  	<button type="submit" name="Send" class="btn btn-primary">Send</button>
+		  	<a href="{%	url 'home'	%}" role="button" class="btn btn-secondary">Home</a>
+ 
+		  </div>
+		  
+   </form>
+
+  
+  
+</div>
+
+
+{%  endblock    %}
