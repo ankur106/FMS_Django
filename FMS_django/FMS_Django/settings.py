@@ -42,6 +42,7 @@ MESSAGE_TAGS = {
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_rename_app',
-    'app.apps.AppConfig'
+    'app.apps.AppConfig',
+    'csvimport.app.CSVImportConf'  # use AppConfig for django >=1.7 csvimport >=2.2
 ]
 
 MIDDLEWARE = [
@@ -154,5 +156,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.getenv('email')
-EMAIL_HOST_PASSWORD = os.getenv('pwd')
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''

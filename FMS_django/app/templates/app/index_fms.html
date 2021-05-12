@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-{% load static   %}
-
-
+{% load static %}
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -16,22 +13,20 @@
  
 
   <!-- Google Fonts -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
- -->
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link type="text/css" href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+<link type="text/css" href="{% static 'assets/css/new.css' %}" rel="stylesheet">
 
-  
 </head>
 
 <body>
@@ -40,11 +35,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto "><a href="{% url 'home' %}">
-        FMS
-       
-        
-      </a></h1>
+      <h1 class="logo me-auto"><a href="{% url 'home' %}">FMS</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       
@@ -55,11 +46,20 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
+           {%  if user.is_authenticated %}
+            
+
+            <li><a class="" href="{% url 'generate_survey'   %}">Generate Survey</a></li>
+          <li><a class="nav-link " href="{% url 'generate_report'   %}">Generate Report</a></li>
+
+          {% else %}
+
           
           <li><a class="" href="{% url 'loginAdmin'  %}">Login</a></li>
+
+          {% endif %}
                     
-          <li><a class="" href="{% url 'dashboard'  %}">Dashboard</a></li>
-           <li><a class="" href="{% url 'myfun'  %}">SendMail</a></li>
+          
           <!-- <li>
           	 <a class="getstarted">
           	 	{%  if user.is_authenticated %}
@@ -92,30 +92,181 @@
 
 <!-- ############### -->
 
+<!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Better Solutions For Your Business</h1>
+          <h2>Connect your clients ans customers easily. </h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{% static 'assets/img/hero-img.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+  <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+        </div>
+
+        <div class="row content justify-content-center">
+          <div class="col-lg-6">
+            <p>
+             FMS - Feedback Management System provides utility to store your customer data.  On based on that data Customized Survey can be created. And response of that survey can be analyzed using integrated generate report module.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Integrated Survey Creation Module</li>
+              <li><i class="ri-check-double-line"></i> Integrated Generate Report Module</li>
+              
+            </ul>
+          </div>
+          
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>FMS capabilities are uniquely embedded directly 
+            into the contact center desktop, empowering agents and supervisors 
+            with customer sentiment data in real-time, providing them a well-rounded 
+            picture of how customers are feeling and what they’re doing.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="">Predictive Analytics</a></h4>
+              <p>Take the guesswork 
+                out of your decisions 
+                with advanced 
+                Predictive Analytics</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Survey Creation</a></h4>
+              <p>Generate survey and reach out to your Customer</p>
+            </div>
+          </div>
+
+          
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>We are team of students studying Computer Engineering at Birla Vishwakarma Mahavidyalaya</p>
+        </div>
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pic"><img src="{% static 'assets/img/AnkurImage.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Ankur Patel</h4>
+                <span>Student</span>
+                <p>Third year Student at Birla Vishwakrama Mahavidyalaya</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pic"><img src="{% static 'assets/img/AviImage.jpeg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Avi Paghdhar</h4>
+                <span>Student</span>
+                <p>Third year Student at Birla Vishwakrama Mahavidyalaya</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pic"><img src="{% static 'assets/img/KirtanImage.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Kirtan Gadhiya</h4>
+                <span>Student</span>
+                <p>Third year Student at Birla Vishwakrama Mahavidyalaya</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+      </div>
+    </section><!-- End Team Section -->
+
+
 
 
 
 <!-- ############### -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer" style="margin-top: 250px;">
 
     
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-       <!--  &copy; Copyright <strong><span>FMS Team</span></strong>. All Rights Reserved -->
+        &copy; Copyright <strong><span>FMS Team</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        <!-- Designed by <a href="#">FMS Team</a> -->
+        Designed by <a href="#">FMS Team</a>
       </div>
     </div>
   </footer><!-- End Footer -->
 
-  
+ 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

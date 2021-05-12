@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html>
-{%  load static %}
+<html lang="en">
+{% load static %}
 <head>
-  <title>sendmail</title>
-   <!-- Google Fonts -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Feedback Management System</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+ 
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
@@ -18,13 +27,9 @@
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 <link href="{% static 'assets/css/new.css' %}" rel="stylesheet">
 
-  
 </head>
+
 <body>
-<!-- <h1>Form</h1>
- -->
-
-
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
@@ -33,25 +38,35 @@
       <h1 class="logo me-auto"><a href="{% url 'home' %}">FMS</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+      
       <nav id="navbar" class="navbar">
         <ul>
           
-          
-          <li><a class="" href="{% url 'sendEmail'   %}">Generate Survey</a></li>
-          <li><a class="nav-link " href="generate_report.html">Generate Report</a></li>
+          <li><a class="" href="{% url 'generate_survey'   %}">Generate Survey</a></li>
+          <li><a class="nav-link " href="{% url 'generate_report'   %}">Generate Report</a></li>
+          <!-- <li>
+          	 <a class="getstarted">
+          	 	{%  if user.is_authenticated %}
+		             {{ user.username }}
+			    {%   endif  %}
+          	 </a>
+          </li> -->
+
+         
           <li>
 
         {%  if user.is_authenticated %}
-            <form action="{% url 'logoutAdmin' %}" method="post">
-               {% csrf_token  %}
-            <button type="submit" class="getstarted">Logout</button>
+            
+
+            <form method="post" action="{% url 'logoutAdmin' %}">
+                {% csrf_token  %}
+                
+             <a onclick="this.parentNode.submit();"  class="getstarted">Logout</a>
             </form>
-              
+
         {% endif %}
 
           </li>
-          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -59,89 +74,38 @@
     </div>
   </header><!-- End Header -->
 
+<!-- ############### -->
+<div style="text-align: center; margin:auto">
 
+{%  if plotz %}
 
+{%	for plot in plotz %}
+<div class="row" style="border: 1px solid black">
 
-<!-- ************** -->
+<div style="height: 100;width: 100	;">
+	
+{{ plot|safe }}
 
-
-
-  <main id="main">
-
-
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        
-        <h2>Generate Survey</h2>
-
-      </div>
-    </section>
-
-{% for message in messages %}
-<div class="container-fluid p-0">
-  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    {{ message }}
-  </div>
 </div>
-{% endfor %}
+</div>
+{%	endfor		%}
 
-<div class="generate-survey">
+{%  else %}
+<p>No Plot</p>
 
-  
-<form method="POST">
-        {% csrf_token  %}
-      
-        <label class="label">
-         ProductName
-         <select name="p_name" class="survey-input" >
-           {% for pName in productNameList  %}
-              <option value="{{pName}}" >{{pName}}</option>
-           {% endfor    %}
-         </select>
-        </label>
-        
-        <label class="label">
-          ProductType
-          <select name="p_type" class="survey-input" >
-              {% for pType in productTypeList   %}
-                   <option value="{{pType}}" >{{pType}}</option>
-              {% endfor   %}
-          </select> 
-        </label>
-        
-        <label class="label" >
-          Form link:<input type="text" name="formLink" class="survey-input" >
-        </label>
-        
-        <label class="label">
-          Message:<textarea   rows="4" cols="40" type="text" name="msg" class="survey-input" ></textarea>
-        </label><br>
-        <div class="p-t-10" style="text-align: center;">
-            <button class="btn btn-primary " type="submit" style="width: auto">Send Mail</button>
-        </div>
-        
-      
-      </form>
+{% endif %}
 
-      </div>
-  
+</div>
 
-  </main>
+<!-- ############### -->
 
-
-
-
-<footer id="footer">
+  <!-- ======= Footer ======= -->
+  <footer id="footer" style="margin-top: 450px";>
 
     
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>FMS Team</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>FMS Team</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -153,11 +117,12 @@
     </div>
   </footer><!-- End Footer -->
 
+  
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-
-<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
   <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
@@ -168,7 +133,13 @@
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
 
-
-
 </body>
+
 </html>
+
+
+
+
+
+
+

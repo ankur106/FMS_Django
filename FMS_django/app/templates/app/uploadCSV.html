@@ -1,0 +1,62 @@
+{% extends 'app/root.html' %}
+{% load static %}
+{% block title %}
+uploadCSV
+{% endblock %}
+{% block content %}
+<h1>{{ err }}</h1>
+<!--  -->
+<div class="m-5">
+    <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="uploadCSVForm">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">File: </label>
+            <div>
+                <input type="file" name="csv_file" required="True" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="uploadCSVBtn"> Upload </button>
+        </div>
+    </form>
+    <!-- ############################################################## -->
+    <hr>
+    <form method="POST" action="{% url 'test'  %}">
+        {% csrf_token %}
+        <div class="row">
+            {% for t in DataFrameColumns %}
+            <div class="col-lg-3">
+                <big>{{t}}</big>
+                <select name="{{t}}" class="form-select" aria-label="multiple select example">
+                    <option value="Bar">Bar</option>
+                    <option value="Pie">Pie</option>
+                </select>
+                <!-- Bubble Chart -->
+                <big>Bubble Chart</big>
+                <select name="{{t}}bb" multiple class="form-select" aria-label="multiple select example">
+                    <option value="None">None</option>
+                    {% for myx in DataFrameColumns %}
+                    <option value="{{myx}}">{{myx}}</option>
+                    {% endfor %}
+                </select>
+                <!-- Bubble Map -->
+                <big>Bubble Map</big>
+                <select name="{{t}}bb" multiple class="form-select" aria-label="multiple select example">
+                    <option value="None">None</option>
+                    {% for myx in DataFrameColumns %}
+                    <option value="{{myx}}">{{myx}}</option>
+                    {% endfor %}
+                </select>
+                <hr>
+            </div>
+            {% endfor %}
+        </div>
+        <hr>
+        <div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="GoBtn">
+            GO
+        </button>
+    </form>
+</div>
+{% endblock %}

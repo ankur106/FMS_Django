@@ -72,77 +72,20 @@
 
 
       <!-- ======= Breadcrumbs ======= -->
-      <section id="breadcrumbs" class="breadcrumbs" style="margin-bottom: 50px">
+      <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
 
           
-          <h2>Generate Survey</h2>
+          <h2>Generate Survey Successful</h2>
 
         </div>
       </section>
 
-  {% for message in messages %}
-  <div class="container-fluid p-0">
-    <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      {{ message }}
-    </div>
-  </div>
-  {% endfor %}
-
-  <div class="generate-survey">
-
-    
-  <form method="POST">
-          {% csrf_token  %}
-        
-          <label class="label">
-           Product Name: &nbsp;&nbsp;   
-           <select name="p_name" class="survey-input form-select form-select-sm" style="width:200px" >
-             {% for pName in productNameList  %}
-                <option value="{{pName}}" >{{pName}}</option>
-             {% endfor    %}
-           </select></label>
-          
-          
-          <label class="label">
-            Product  Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <select name="p_type" class="survey-input form-select form-select-sm" style="width:200px" >
-                {% for pType in productTypeList   %}
-                     <option value="{{pType}}" >{{pType}}</option>
-                {% endfor   %}
-            </select></label>
-          
-          
-          <label class="label">
-            Form ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <select name="f_id" class="survey-input form-select form-select-sm" style="width:200px" >
-                {% for fid in formIdList   %}
-                     <option value="{{fid}}" >{{fid}}</option>
-                {% endfor   %}
-            </select> </label>
-          
-          <label class="label">
-            Message:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea   rows="4" cols="40" type="text" name="msg" class="survey-input " ></textarea>
-          </label><br>
-          <div class="p-t-10" style="text-align: center;">
-              <button class="btn btn-primary " type="submit" style="width: auto">Send Mail</button>
-          </div>
-          
-        
-        </form>
-
-        </div>
-        
-    
-
-    </main>
+      </main>
 
 
     <!-- ======= Footer ======= -->
-    <footer id="footer" style="margin-top: 250px";>
+    <footer id="footer" style="margin-top: 500px";>
 
       
       <div class="container footer-bottom clearfix">
@@ -178,4 +121,4 @@
 
   </body>
 
-  </html>
+  </html>	

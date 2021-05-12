@@ -377,7 +377,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .container {
-  padding-top: 72px;
+  padding-top: 50px;
 }
 
 #hero h1 {
@@ -1622,7 +1622,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  position: fixed;
+  
   bottom: 0px;
   width: 100%;
 

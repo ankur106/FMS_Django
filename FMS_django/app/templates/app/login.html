@@ -15,17 +15,17 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link type="text/css"  href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">  
 
   <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-<link href="{% static 'assets/css/new.css' %}" rel="stylesheet">
+  <link type="text/css" href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+<link type="text/css" href="{% static 'assets/css/new.css' %}" rel="stylesheet">
 
 </head>
 
@@ -55,32 +55,32 @@
 
   
 
-  <main id="main">
+ 
+    <main id="main">
+    
     <div class="login-page">
+      
       <div class="form">
-        <h2>{{ err }} </h2>
+         
         
         <form class="login-form" method="POST">
-         
            {% csrf_token  %}
-           <!-- {{form.as_p}} -->
-          <input type="text" name='username' placeholder="username"/>
-          <input type="password" name='password' placeholder="password"/>
-          <button type="submit" class="btn btn-secondary">login</button>
+            <label class="label">Username:</label>
+            <input type="text" name="username" placeholder="username"/>
+            <label class="label">Password:</label>
+            <input type="password" name="password" placeholder="password"/>
+          <button>login</button>
+          <p>{{err}}</p>
+            
         </form>
       </div>
     </div>
-    
-    
 
-
-    
-    
-
+        
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" style="margin-bottom: 0px;">
+  <footer id="footer" style="margin-top: 250px;">
 
     
     <div class="container footer-bottom clearfix">

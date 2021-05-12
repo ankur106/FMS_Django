@@ -16,7 +16,8 @@ class FBFormType(models.Model):
 
 class FBForm(models.Model):
 
-	FBFormId = models.CharField(primary_key=True,max_length=30,unique=True)
+	FBFormId = models.CharField(primary_key=True,max_length=30,unique=True,)
+
 	FBFormLink = models.CharField(max_length=250)
 	FBFormTypeId = models.ForeignKey(to=FBFormType, on_delete=models.CASCADE)
 
@@ -40,6 +41,10 @@ class Branch(models.Model):
 	branchId = models.CharField(primary_key=True,max_length=40,unique=True,blank=False)
 	branchName = models.CharField(max_length=50,blank=False,unique=True)
 	Address = models.CharField(max_length=100,blank=False)
+
+
+class branchProduct(models.Model):
+	branchId = models.ForeignKey(to=Branch, on_delete=models.CASCADE)
 	productId = models.ForeignKey(to=Product, on_delete=models.CASCADE)
 
 
